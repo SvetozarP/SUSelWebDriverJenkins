@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         DOTNET_VERSION = '6.0'  // Change to your required .NET version
-        SOLUTION_FILE = 'SeleniumIde.sln'  // Change to your solution file
+        SOLUTION_FILE = 'SeleniumBasicExercise.sln'  // Change to your solution file
     }
 
     stages {
@@ -34,11 +34,29 @@ pipeline {
             }
         }
 
-        stage('Run Tests') {
+        stage('Run Tests for Project1') {
             steps {
                 script {
-                    echo 'Running tests...'
-                    bat "dotnet test ${SOLUTION_FILE}"
+                    echo 'Running tests from TestProject1...'
+                    bat "dotnet test TestProject1/TestProject1.csproj"
+                }
+            }
+        }
+
+        stage('Run Tests for Project2') {
+            steps {
+                script {
+                    echo 'Running tests from TestProject2...'
+                    bat "dotnet test TestProject2/TestProject2.csproj"
+                }
+            }
+        }
+
+        stage('Run Tests for Project3') {
+            steps {
+                script {
+                    echo 'Running tests from TestProject3...'
+                    bat "dotnet test TestProject3/TestProject3.csproj"
                 }
             }
         }
